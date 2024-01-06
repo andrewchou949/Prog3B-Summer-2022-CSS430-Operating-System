@@ -8,6 +8,7 @@
 //
 // -------------------------------------------------------------------------------------------------------
 
+import io.github.pixee.security.BoundedLineReader;
 import java.util.*;
 import java.lang.reflect.*;
 import java.io.*;
@@ -144,7 +145,7 @@ public class Kernel
 		switch ( param ) {
 		case STDIN:
 		    try {
-			String s = input.readLine(); // read a keyboard input
+			String s = BoundedLineReader.readLine(input, 5_000_000); // read a keyboard input
 			if ( s == null ) {
 			    return ERROR;
 			}
